@@ -1,25 +1,58 @@
-import logo from './logo.svg';
 import './App.css';
+import Route from './components/Route';
+import Display_api_dofus from "./components/DisplayApi1";
+import Header_content from "./components/Header";
+import { useState } from 'react';
+import Display_git from "./components/Display_git";
+import DisplayMFG from "./components/DisplayMonsterFromGit";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    let [user, setUser] = useState("");
+    let [pseudos, setPseudos] = useState([]);
+
+    //Get user
+    const submit = (e) => {
+        e.preventDefault();
+        let username = e.target.username.value;
+        setUser(username);
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Header_content/>
+            </header>
+
+            <Route path="/Pres1">
+                <Display_api_dofus monster={'Tronknyde'}/>
+                <Display_api_dofus monster={'Branche Invocatrice'}/>
+                <Display_api_dofus monster={'Branche Soignante'}/>
+                <Display_api_dofus monster={'Arbre Collant'}/>
+                <Display_api_dofus monster={"Abraknyde"}/>
+                <Display_api_dofus monster={"Abraknyde Sombre"}/>
+                <Display_api_dofus monster={"Abraknyde Ancestral"}/>
+                <Display_api_dofus monster={"Chêne Mou"}/>
+
+            </Route>
+
+            <Route path="/Pres2">
+                <form onSubmit={submit}>
+                    <input type="text" className="input" name="username" placeholder="Github username"/>
+                    <input className="btn-submit submit" type="submit" value="Valider"/>
+                </form>
+                <Display_git user_git={user} pseudos={pseudos} setPseudos={setPseudos} />
+            </Route>
+
+            <Route path="/Fusion">
+                <form onSubmit={submit}>
+                    <input type="text" className="input" name="username" placeholder="Github username"/>
+                    <input className="btn-submit submit" type="submit" value="Valider"/>
+                </form>
+                <DisplayMFG git_pseudo={user} pseudos={pseudos} setPseudos={setPseudos}/>
+            </Route>
+        </div>
+    );
 }
 
 export default App;
