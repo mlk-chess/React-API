@@ -26,6 +26,13 @@ export default function DisplayMFG({git_pseudo, pseudos, setPseudos}) {
     if (git_pseudo === ""){
         return (<></>);
     }
+
+    if (!pseudos.id){
+        return(<>
+            <Display_git user_git={git_pseudo} pseudos={pseudos} setPseudos={setPseudos}/>
+        </>);
+    }
+
     return (
         <>
            <Display_git user_git={git_pseudo} pseudos={pseudos} setPseudos={setPseudos}/>

@@ -33,7 +33,7 @@ export default function Display_git({user_git, pseudos, setPseudos}) {
         return (<></>);
     }
 
-    if (!pseudos.id) {
+    if (!pseudos.id && status === 404) {
         return (
             <div className="error">
                 <p>Utilisateur github non-existant</p>
