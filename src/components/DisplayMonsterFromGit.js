@@ -1,6 +1,7 @@
 import Display_api_dofus from "./DisplayApi1";
 import Display_git from "./Display_git";
 
+//Fonction permettant de récupérer le monstre adéquat
 function GetTheGoodMonster(repos) {
     if (repos <= 5)
         return <Display_api_dofus monster={"Tronknyde"}/>
@@ -37,7 +38,7 @@ export default function DisplayMFG({git_pseudo, pseudos, setPseudos}) {
         <>
            <Display_git user_git={git_pseudo} pseudos={pseudos} setPseudos={setPseudos}/>
             <h1>
-                <span className="pseudo_git">{git_pseudo} </span>
+                <span className="pseudo_git"> {git_pseudo} </span>
                 est un(e)
                 {GetTheGoodMonster(pseudos.public_repos)}
            </h1>

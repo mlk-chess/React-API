@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 export default function Display_git({user_git, pseudos, setPseudos}) {
 
+    //Variables d'états pour récupérer le status de l'API
     let [status, setStatus] = useState(0);
     let [statusText, setStatusText] = useState("");
 
@@ -22,6 +23,7 @@ export default function Display_git({user_git, pseudos, setPseudos}) {
         };
     }, [user_git]);
 
+    // Vérifie qu'on ne sollicite pas trop l'API
     if (status === 403) {
         return (
             <div className="error">
@@ -29,10 +31,12 @@ export default function Display_git({user_git, pseudos, setPseudos}) {
             </div>
         );
     }
+    //Vérifie si on a bien rentré un pseudo git dans l'input
     if (user_git === "") {
         return (<></>);
     }
 
+    //Vérifie que le pseudo git existe
     if (!pseudos.id && status === 404) {
         return (
             <div className="error">

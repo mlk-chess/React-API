@@ -24,7 +24,9 @@ function App() {
                 <Header_content/>
             </header>
 
+            {/*Présentation de la première API: DOFUS*/}
             <Route path="/Pres1">
+                <h1> Monstres Choisis </h1>
                 <Display_api_dofus monster={'Tronknyde'}/>
                 <Display_api_dofus monster={'Branche Invocatrice'}/>
                 <Display_api_dofus monster={'Branche Soignante'}/>
@@ -36,6 +38,7 @@ function App() {
 
             </Route>
 
+            {/*Présentation de la deuxième API: GitHub*/}
             <Route path="/Pres2">
                 <form onSubmit={submit}>
                     <input type="text" className="input" name="username" placeholder="Github username"/>
@@ -43,6 +46,8 @@ function App() {
                 </form>
                 <Display_git user_git={user} pseudos={pseudos} setPseudos={setPseudos} />
             </Route>
+
+            {/*Fusion des 2 APIs*/}
 
             <Route path="/Fusion">
                 <form onSubmit={submit}>
