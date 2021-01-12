@@ -24,9 +24,6 @@ function App() {
                 <Header_content/>
             </header>
 
-            <Route path={"/test"}>
-                <h1>Test</h1>
-            </Route>
             {/*Présentation de la première API: DOFUS*/}
             <Route path="/Pres1">
                 <h1> Monstres Choisis </h1>
